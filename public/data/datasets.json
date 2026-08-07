@@ -1,0 +1,44 @@
+[
+  {
+    "id": "ds-001",
+    "title": "Global White Stork Migration Tracking (2024-2025)",
+    "doi": "10.5061/dryad.5f8g2.3",
+    "abstract": "High-resolution GPS telemetry data tracking the seasonal migration routes of White Storks (Ciconia ciconia) across Europe and Sub-Saharan Africa, collected in collaboration with the Max Planck Institute for Animal Behaviour.",
+    "authors": ["Dr. Miriam Weber", "Prof. Hans-Dieter Brandt", "Martin Schmit"],
+    "discipline": "Animal Ecology & Behaviour",
+    "format": "CSV / NetCDF",
+    "fileSize": "142 MB",
+    "publicationDate": "2026-03-12",
+    "license": "CC-BY 4.0",
+    "tags": ["Telemetry", "Migration", "Birds", "GPS", "Movebank"],
+    "downloadsCount": 1280
+  },
+  {
+    "id": "ds-002",
+    "title": "Konstanz Lake Surface Water Temperature and Ecological Sensors",
+    "doi": "10.3390/lakes-konstanz-hydro-88",
+    "abstract": "Continuous limnological monitoring data including water temperature, dissolved oxygen levels, and pH values recorded at multiple depth profiles in Lake Constance (Bodensee).",
+    "authors": ["Dr. Elena Rossi", "Klaus Wagner"],
+    "discipline": "Limnology & Environmental Science",
+    "format": "JSON / Parquet",
+    "fileSize": "58.4 MB",
+    "publicationDate": "2026-02-18",
+    "license": "ODC-By v1.0",
+    "tags": ["Limnology", "Water Quality", "Bodensee", "Sensors"],
+    "downloadsCount": 645
+  },
+  {
+    "id": "ds-003",
+    "title": "Alpine Biodiversity and Flora Distribution in the Black Forest",
+    "doi": "10.1016/j.ecoinf.2026.10241",
+    "abstract": "Comprehensive vegetation surveys and geospatial mapping of endemic plant species across various elevation gradients in the Black Forest mountain range, documenting climate shift impacts.",
+    "authors": ["Dr. Sabine Becker", "Thomas Huber", "Anke Schneider"],
+    "discipline": "Botany & Conservation",
+    "format": "GeoJSON / CSV",
+    "fileSize": "95.1 MB",
+    "publicationDate": "2026-04-05",
+    "license": "CC-BY 4.0",
+    "tags": ["Flora", "Biodiversity", "Black Forest", "GIS", "Climate Change"],
+    "downloadsCount": 412
+  }
+]
