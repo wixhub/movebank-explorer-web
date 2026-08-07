@@ -11,7 +11,7 @@ A modern, high-performance, and fully responsive web application built as a fron
 
 ## 🚀 Live Demo
 
-🔗 **[View Live Application on Cloudflare Pages](https://movebank-explorer-web.pages.dev)**
+🔗 **[View Live Application on Cloudflare Pages](https://movebank-explorer.pages.dev)**
 
 ---
 
@@ -40,7 +40,7 @@ This project simulates a production-ready interface for browsing, filtering, and
 
 ## 📂 Project Structure
 
-````text
+```text
 src/
 ├── app/
 │   ├── core/           # Core interceptors, layout services, guards
@@ -52,6 +52,7 @@ src/
 │   └── app.component.ts
 ├── assets/             # Static mock data and icons
 └── styles/             # Global SCSS variables, mixins, and resets
+```
 
 ---
 
@@ -63,7 +64,7 @@ To start a local development server, run:
 
 ```bash
 ng serve
-````
+```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
