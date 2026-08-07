@@ -1,0 +1,85 @@
+<div class="repository-container">
+  <!-- Header Section -->
+  <header class="repo-header">
+    <h1>MoveRDM Dataset Explorer</h1>
+    <p class="subtitle">Research Data Repository Prototype</p>
+
+    <!-- Data Source Control Panel -->
+    <div class="data-controls">
+      <span class="control-label">Data Source:</span>
+      <button class="btn" [class.active]="activeSource() === 'mock'" (click)="loadMockData()">
+        📂 Local Mock Data
+      </button>
+    </div>
+
+    <!-- Dynamic Movebank API Query Panel -->
+    <form [formGroup]="queryForm" (ngSubmit)="loadCustomLiveQuery()" class="live-query-panel">
+      <div class="query-field">
+        <label for="entityType">Entity:</label>
+        <select id="entityType" formControlName="entityType">
+          <option value="study">Studies (List)</option>
+          <option value="tag_type">Tag Types (Sensors)</option>
+          <option value="taxon">Taxons (Animal Species)</option>
+          <option value="deployment">Deployments (Tracking events)</option>
+        </select>
+      </div>
+
+      <div class="query-field">
+        <label for="studyId">Study ID (Opt):</label>
+        <input id="studyId" type="text" formControlName="studyId" placeholder="e.g. 123456" />
+      </div>
+
+      <button type="submit" class="btn live-btn" [class.active]="activeSource() === 'live'">
+        🌐 Fetch Live API
+      </button>
+    </form>
+  </header>
+
+  <!-- Loading State -->
+  @if (isLoading()) {
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p>Synchronizing repository records...</p>
+    </div>
+  }
+
+  <!-- Error State -->
+  @if (errorMessage()) {
+    <div class="error-banner">
+      <p>{{ errorMessage() }}</p>
+    </div>
+  }
+
+  <!-- Dataset Grid -->
+  @if (!isLoading() && datasets().length > 0) {
+    <div class="dataset-grid">
+      @for (dataset of datasets(); track dataset.id) {
+        <article class="dataset-card">
+          <div class="card-meta-top">
+            <span class="badge discipline">{{ dataset.discipline }}</span>
+            <span class="badge format">{{ dataset.format }}</span>
+          </div>
+
+          <h3 class="dataset-title">{{ dataset.title }}</h3>
+          <p class="dataset-doi"><strong>DOI / ID:</strong> {{ dataset.doi }}</p>
+          <p class="dataset-abstract">{{ dataset.abstract }}</p>
+
+          <div class="dataset-authors">
+            <strong>Authors:</strong> {{ dataset.authors.join(', ') }}
+          </div>
+
+          <div class="tags-container">
+            @for (tag of dataset.tags; track tag) {
+              <span class="tag">#{{ tag }}</span>
+            }
+          </div>
+
+          <footer class="card-footer">
+            <span class="file-size">📦 {{ dataset.fileSize }}</span>
+            <span class="downloads">⬇️ {{ dataset.downloadsCount }} downloads</span>
+          </footer>
+        </article>
+      }
+    </div>
+  }
+</div>
