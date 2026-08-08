@@ -12,6 +12,7 @@ A high-performance, fully responsive web application built as a frontend prototy
 [![Angular](https://img.shields.io/badge/Angular-22-red?logo=angular)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Cloudflare Pages](https://img.shields.io/badge/Deployed%20to-Cloudflare%20Pages-orange?logo=cloudflare)](https://pages.cloudflare.com/)
+[![Cloudflare Worker](https://img.shields.io/badge/Cloudflare-Worker-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://wispy-surf-c9db.rublin.workers.dev/)
 [![SCSS](https://img.shields.io/badge/Styles-SCSS-pink?logo=sass)](https://sass-lang.com/)
 
 ---
@@ -155,6 +156,12 @@ For more information on using the Angular CLI, including detailed command refere
 
 ---
 
+## 🚀 Live Demo
+
+🔗 **[View Worker on Cloudflare Workers](https://wispy-surf-c9db.rublin.workers.dev/)**
+
+---
+
 ## ⚙️ Cloudflare Worker Setup
 
 To enable live data fetching without CORS or security issues, deploy the backend proxy worker:
@@ -173,8 +180,6 @@ npx wrangler secret put MOVEBANK_PASSWORD
 ```bash
 npx wrangler deploy
 ```
-
----
 
 ## 🤝 Contributing
 
