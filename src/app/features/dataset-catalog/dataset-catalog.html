@@ -6,8 +6,6 @@
 
     <!-- Dynamic Movebank API Query Panel -->
     <form [formGroup]="queryForm" (ngSubmit)="loadCustomLiveQuery()" class="live-query-panel">
-      <span class="control-label">Data Source:</span>
-
       <div class="query-field">
         <label for="entityType">Entity:</label>
         <select id="entityType" formControlName="entityType">
@@ -23,13 +21,19 @@
         <input id="studyId" type="text" formControlName="studyId" placeholder="e.g. 123456" />
       </div>
 
-      <button type="submit" class="btn live-btn" [class.active]="activeSource() === 'live'">
-        🌐 Fetch Live API
-      </button>
+      <div class="query-field">
+        <label for="liveData">Movebank Data Source</label>
+        <button type="submit" class="btn live-btn" [class.active]="activeSource() === 'live'">
+          🌐 Fetch Live API
+        </button>
+      </div>
 
-      <button class="btn" [class.active]="activeSource() === 'mock'" (click)="loadMockData()">
-        📂 Local Mock Data
-      </button>
+      <div class="query-field">
+        <label for="localData">Local Data Source</label>
+        <button class="btn" [class.active]="activeSource() === 'mock'" (click)="loadMockData()">
+          📂 Local Mock Data
+        </button>
+      </div>
     </form>
   </header>
 
