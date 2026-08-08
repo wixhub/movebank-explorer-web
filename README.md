@@ -88,7 +88,7 @@ movebank-explorer-web/
 1. **Clone the repository:**
 
 ```bash
-git clone [git@github.com:wixhub/movebank-explorer-web.git](git@github.com:wixhub/movebank-explorer-web.git)
+git clone git@github.com:wixhub/movebank-explorer-web.git
 
 cd movebank-explorer-web
 ```
