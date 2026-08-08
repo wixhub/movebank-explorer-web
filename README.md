@@ -2,7 +2,7 @@
 
 ### Research Data Repository Frontend
 
-A high-performance, fully responsive web application built as a frontend prototype for ecological and behavioral research data repositories within the **MoveRDM** initiative. It integrates with the **[Movebank API](https://www.movebank.org/)** — a global infrastructure coordinated by the [Max Planck Institute of Animal Behavior](https://www.ab.mpg.de/), the [University of Konstanz](https://www.uni-konstanz.de/), and partner institutions.
+A high-performance, fully responsive web application built as a frontend prototype for ecological and behavioral research data repositories within the **MoveRDM** initiative. It integrates with the **[Movebank API](https://www.movebank.org/)** — a global infrastructure coordinated by the [Max Planck Institute of Animal Behavior](https://www.ab.mpg.de/), the [University of Konstanz](https://www.uni-konstanz.de/) and partner institutions.
 
 [![Movebank API](https://img.shields.io/badge/Movebank-API_Live-2ea44f?style=flat&logo=databricks&logoColor=white)](https://www.movebank.org/)
 [![Max Planck Institute](https://img.shields.io/badge/MPI_Animal_Behavior-Partner-005691?style=flat)](https://www.ab.mpg.de/)
