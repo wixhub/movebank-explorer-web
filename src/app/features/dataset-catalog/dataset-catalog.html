@@ -2,7 +2,20 @@
   <!-- Header Section -->
   <header class="repo-header">
     <h1>MoveRDM Dataset Explorer</h1>
-    <p class="subtitle">Research Data Repository Prototype</p>
+
+    <p class="subtitle">
+      Research Data Repository Prototype integrating live telemetry from the
+      <a href="https://www.movebank.org/" target="_blank" rel="noopener">Movebank API</a>
+      <br />
+      A global infrastructure coordinated by the
+      <a href="https://www.ab.mpg.de/" target="_blank" rel="noopener"
+        >Max Planck Institute of Animal Behavior</a
+      >, the
+      <a href="https://www.uni-konstanz.de/" target="_blank" rel="noopener"
+        >University of Konstanz</a
+      >
+      and partner institutions
+    </p>
 
     <!-- Dynamic Movebank API Query Panel -->
     <form [formGroup]="queryForm" (ngSubmit)="loadCustomLiveQuery()" class="live-query-panel">
@@ -29,8 +42,13 @@
       </div>
 
       <div class="query-field">
-        <label for="localData">Local Data Source</label>
-        <button class="btn" [class.active]="activeSource() === 'mock'" (click)="loadMockData()">
+        <label for="localData">Local Mock Data Source</label>
+        <button
+          type="button"
+          class="btn"
+          [class.active]="activeSource() === 'mock'"
+          (click)="loadMockData()"
+        >
           📂 Local Mock Data
         </button>
       </div>
@@ -84,4 +102,22 @@
       }
     </div>
   }
+
+  <!-- Global App Footer with Links -->
+  <footer class="app-main-footer">
+    <div class="footer-content">
+      <p>
+        <strong>MoveRDM Dataset Explorer</strong> • Open-source project available on
+        <a href="https://github.com/wixhub/movebank-explorer-web" target="_blank" rel="noopener"
+          >GitHub</a
+        >
+      </p>
+      <p class="footer-subtext">
+        Powered by Angular & Cloudflare Workers. Data streams provided by Movebank.
+      </p>
+      <span class="author-credit">
+        Developed by <a href="https://github.com/wixhub" target="_blank" rel="noopener">@Rublin</a>
+      </span>
+    </div>
+  </footer>
 </div>

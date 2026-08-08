@@ -95,39 +95,50 @@
 
   /* Universal Buttons */
   .btn {
+    /* Base button styles */
     padding: 0.5rem 1rem;
     border: 1px solid #cbd5e1;
     border-radius: 6px;
     background: #ffffff;
-    color: #334155;
+    color: #475569;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
 
+    /* Secondary button hover state */
     &:hover {
-      background: #f1f5f9;
+      background: #c4d5e7;
       border-color: #94a3b8;
+      color: #1e293b;
     }
 
+    /* Secondary button active/selected state */
     &.active {
-      background: #88a6cb;
-      color: #ffffff;
-      border-color: #425c75;
+      background: #e2e8f0;
+      color: #1e293b;
+      border-color: #d1d6de;
+      border-style: dashed;
     }
 
+    /* Primary (Live) button styles */
     &.live-btn {
-      background: #e6fffa;
-      color: #0d9488;
-      border-color: #5eead4;
+      /* Soft pastel mint background for primary action */
+      background: #e6f4ea;
+      color: #137333;
+      border-color: #9cd2ab;
+      font-weight: bold;
 
+      /* Primary button hover state */
       &:hover {
-        background: #ccfbf1;
+        background: #ceead6;
+        border-color: #a8dab5;
       }
 
+      /* Primary button active state */
       &.active {
-        background: #0d9488;
+        background: #137333;
         color: #ffffff;
-        border-color: #0d9488;
+        border-color: #137333;
       }
     }
   }
