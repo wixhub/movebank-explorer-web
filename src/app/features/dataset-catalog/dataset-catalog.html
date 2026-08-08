@@ -4,16 +4,10 @@
     <h1>MoveRDM Dataset Explorer</h1>
     <p class="subtitle">Research Data Repository Prototype</p>
 
-    <!-- Data Source Control Panel -->
-    <div class="data-controls">
-      <span class="control-label">Data Source:</span>
-      <button class="btn" [class.active]="activeSource() === 'mock'" (click)="loadMockData()">
-        📂 Local Mock Data
-      </button>
-    </div>
-
     <!-- Dynamic Movebank API Query Panel -->
     <form [formGroup]="queryForm" (ngSubmit)="loadCustomLiveQuery()" class="live-query-panel">
+      <span class="control-label">Data Source:</span>
+
       <div class="query-field">
         <label for="entityType">Entity:</label>
         <select id="entityType" formControlName="entityType">
@@ -31,6 +25,10 @@
 
       <button type="submit" class="btn live-btn" [class.active]="activeSource() === 'live'">
         🌐 Fetch Live API
+      </button>
+
+      <button class="btn" [class.active]="activeSource() === 'mock'" (click)="loadMockData()">
+        📂 Local Mock Data
       </button>
     </form>
   </header>
