@@ -44,29 +44,30 @@ export class DatasetService {
         const delimiter = lines[0].includes('\t') ? '\t' : ',';
         const headers = lines[0].split(delimiter).map((h) => h.replace(/["']/g, '').trim());
 
-        const items: Record<string, string>[] = [];
-        for (let i = 1; i < lines.length; i++) {
-          const currentLine = lines[i].split(delimiter);
+        // Modern functional array reduction and parsing replacing imperative loops
+        const items = lines.slice(1).reduce((acc: Record<string, string>[], currentLineStr) => {
+          const currentLine = currentLineStr.split(delimiter);
           if (currentLine.length === headers.length) {
-            const obj: Record<string, string> = {};
-            for (let j = 0; j < headers.length; j++) {
-              obj[headers[j]] = currentLine[j].replace(/["']/g, '').trim();
-            }
-            items.push(obj);
+            const obj = headers.reduce((rowObj: Record<string, string>, header, j) => {
+              rowObj[header] = currentLine[j].replace(/["']/g, '').trim();
+              return rowObj;
+            }, {});
+            acc.push(obj);
           }
-        }
+          return acc;
+        }, []);
 
         return items.slice(0, 20).map((item, index) => ({
-          id: `custom-${item['id'] || index}`,
-          title: item['name'] || item['local_identifier'] || `Query Result [${entityType}]`,
-          doi: item['doi'] || (studyId ? `Study ID: ${studyId}` : 'Movebank Registry'),
-          abstract: item['description'] || `Dynamic record fetched via entity type: ${entityType}`,
-          authors: [item['principal_investigator_name'] || item['taxon'] || 'Movebank User'],
+          id: `custom-${item['id'] ?? index}`,
+          title: item['name'] ?? item['local_identifier'] ?? `Query Result [${entityType}]`,
+          doi: item['doi'] ?? (studyId ? `Study ID: ${studyId}` : 'Movebank Registry'),
+          abstract: item['description'] ?? `Dynamic record fetched via entity type: ${entityType}`,
+          authors: [item['principal_investigator_name'] ?? item['taxon'] ?? 'Movebank User'],
           discipline: 'Wildlife Telemetry',
           format: `API Query (${entityType})`,
           fileSize: 'Live Stream',
           publicationDate: new Date().toISOString().split('T')[0],
-          license: item['license_type'] || 'CC0',
+          license: item['license_type'] ?? 'CC0',
           tags: [entityType, 'Movebank API', 'Dynamic Filter'],
           downloadsCount: Math.floor(Math.random() * 1000) + 100,
         }));
@@ -81,27 +82,29 @@ export class DatasetService {
   /**
    * Helper method to map raw upstream study items to the internal application Dataset model
    */
-  private mapToDatasets(studies: Record<string, any>[], formatName: string): Dataset[] {
-    return studies.slice(0, 15).map((study, index) => ({
-      id: `mb-${study['id'] || study['study_id'] || index}`,
-      title: study['name'] || study['title'] || 'Untitled Movebank Study',
-      doi:
-        study['doi'] && study['doi'] !== ''
-          ? study['doi']
-          : 'N/A (Movebank ID: ' + (study['id'] || study['study_id']) + ')',
-      abstract:
-        study['description'] ||
-        study['study_objective'] ||
-        'Live data synchronized via secure Cloudflare Worker proxy.',
-      authors: [study['principal_investigator_name'] || 'Movebank Researcher'],
-      discipline: 'Animal Telemetry & Behaviour',
-      format: formatName,
-      fileSize: 'Dynamic Live Stream',
-      publicationDate:
-        study['timestamp'] || study['go_public_date'] || new Date().toISOString().split('T')[0],
-      license: study['license_type'] || 'CC0',
-      tags: ['Live API', 'Movebank', 'Telemetry'],
-      downloadsCount: Math.floor(Math.random() * 2000) + 100,
-    }));
+  private mapToDatasets(studies: Record<string, unknown>[], formatName: string): Dataset[] {
+    return studies.slice(0, 15).map((study, index) => {
+      const studyId = (study['id'] ?? study['study_id']) as string | number | undefined;
+      const doi = study['doi'] as string | undefined;
+
+      return {
+        id: `mb-${studyId ?? index}`,
+        title: (study['name'] ?? study['title'] ?? 'Untitled Movebank Study') as string,
+        doi: doi?.trim() ? doi : `N/A (Movebank ID: ${studyId ?? 'unknown'})`,
+        abstract: (study['description'] ??
+          study['study_objective'] ??
+          'Live data synchronized via secure Cloudflare Worker proxy.') as string,
+        authors: [(study['principal_investigator_name'] as string) ?? 'Movebank Researcher'],
+        discipline: 'Animal Telemetry & Behaviour',
+        format: formatName,
+        fileSize: 'Dynamic Live Stream',
+        publicationDate: (study['timestamp'] ??
+          study['go_public_date'] ??
+          new Date().toISOString().split('T')[0]) as string,
+        license: (study['license_type'] as string) ?? 'CC0',
+        tags: ['Live API', 'Movebank', 'Telemetry'],
+        downloadsCount: Math.floor(Math.random() * 2000) + 100,
+      };
+    });
   }
 }
