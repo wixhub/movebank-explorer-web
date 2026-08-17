@@ -1,11 +1,9 @@
-import { Injectable, inject } from '@angular/core';
+import { Service, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of, map, catchError } from 'rxjs';
 import { Dataset } from '../models/dataset.model';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Service()
 export class DatasetService {
   private readonly http = inject(HttpClient);
 
@@ -44,7 +42,6 @@ export class DatasetService {
         const delimiter = lines[0].includes('\t') ? '\t' : ',';
         const headers = lines[0].split(delimiter).map((h) => h.replace(/["']/g, '').trim());
 
-        // Modern functional array reduction and parsing replacing imperative loops
         const items = lines.slice(1).reduce((acc: Record<string, string>[], currentLineStr) => {
           const currentLine = currentLineStr.split(delimiter);
           if (currentLine.length === headers.length) {
@@ -77,34 +74,5 @@ export class DatasetService {
         return of([]);
       }),
     );
-  }
-
-  /**
-   * Helper method to map raw upstream study items to the internal application Dataset model
-   */
-  private mapToDatasets(studies: Record<string, unknown>[], formatName: string): Dataset[] {
-    return studies.slice(0, 15).map((study, index) => {
-      const studyId = (study['id'] ?? study['study_id']) as string | number | undefined;
-      const doi = study['doi'] as string | undefined;
-
-      return {
-        id: `mb-${studyId ?? index}`,
-        title: (study['name'] ?? study['title'] ?? 'Untitled Movebank Study') as string,
-        doi: doi?.trim() ? doi : `N/A (Movebank ID: ${studyId ?? 'unknown'})`,
-        abstract: (study['description'] ??
-          study['study_objective'] ??
-          'Live data synchronized via secure Cloudflare Worker proxy.') as string,
-        authors: [(study['principal_investigator_name'] as string) ?? 'Movebank Researcher'],
-        discipline: 'Animal Telemetry & Behaviour',
-        format: formatName,
-        fileSize: 'Dynamic Live Stream',
-        publicationDate: (study['timestamp'] ??
-          study['go_public_date'] ??
-          new Date().toISOString().split('T')[0]) as string,
-        license: (study['license_type'] as string) ?? 'CC0',
-        tags: ['Live API', 'Movebank', 'Telemetry'],
-        downloadsCount: Math.floor(Math.random() * 2000) + 100,
-      };
-    });
   }
 }

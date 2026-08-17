@@ -156,7 +156,9 @@ For more information on using the Angular CLI, including detailed command refere
 
 ---
 
-## 🚀 Live Demo
+## 🌐 Data Source & Backend Proxy
+
+Cloudflare Worker Integration: The application utilizes a dedicated serverless worker as an online data source and API proxy. It securely fetches live telemetry streams from the Movebank API, handles CORS limitations, and parses raw CSV responses into strongly-typed data models.
 
 🔗 **[View Worker on Cloudflare Workers](https://wispy-surf-c9db.rublin.workers.dev/)**
 
