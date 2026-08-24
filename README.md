@@ -158,11 +158,11 @@ For more information on using the Angular CLI, including detailed command refere
 
 ## 🌐 Data Source & Backend Proxy
 
-- **Cloudflare Worker Integration**: The application utilizes a dedicated serverless worker as an online data source and API proxy. It securely fetches live telemetry streams from the Movebank API, handles CORS limitations, and parses raw CSV responses into strongly-typed data models.
+- **Cloudflare Worker Integration**: The application utilizes a dedicated serverless worker as an online data source and API proxy. It securely fetches data from the Movebank API, handles CORS limitations, and parses raw CSV responses into strongly-typed data models.
 
 - **Backend Endpoint**: 🔗 **[View Worker on Cloudflare Workers](https://wispy-surf-c9db.rublin.workers.dev/)**
 
-- **Data Attribution**: Telemetry data is accessed via the **[Movebank API](www.movebank.org)** and provided by individual study contributors. Map tiles are powered by **CARTO** under CC BY 3.0, utilizing data from **OpenStreetMap** contributors.
+- **Data Attribution**: Data is accessed via the **[Movebank API](www.movebank.org)** and provided by individual study contributors.
 
 ---
 
@@ -207,8 +207,4 @@ If you have any questions, suggestions, or feedback regarding this project, feel
 
 - This project is open-source and available under the [MIT License](./LICENSE).
 
-- **Data & Map Attribution**:
-
-  - Animal tracking data provided by **[Movebank](www.movebank.org)** and individual researchers.
-
-  - Map tiles by **CARTO**, under CC BY 3.0. Data by **OpenStreetMap** contributors.
+- **Data Attribution**: Data provided by **[Movebank](www.movebank.org)** and individual researchers.
