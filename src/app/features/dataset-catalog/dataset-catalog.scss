@@ -49,32 +49,35 @@
       gap: 1rem;
       align-items: flex-end;
       background: #f8fafc;
-      padding: 1rem;
-      border-radius: 8px;
+      padding: 1.25rem;
+      border-radius: 10px;
       border: 1px solid #e2e8f0;
       margin-top: 1rem;
 
       .query-field {
         display: flex;
         flex-direction: column;
-        gap: 0.3rem;
+        gap: 0.35rem;
 
         label {
-          font-size: 0.85rem;
+          font-size: 0.8rem;
           font-weight: 600;
           color: #4a5568;
+          white-space: nowrap;
         }
 
         select,
         input {
-          padding: 0.5rem 0.75rem;
+          height: 42px; /* Fixed height for uniform alignment across fields and buttons */
+          padding: 0 0.75rem;
           border: 1px solid #cbd5e1;
           border-radius: 6px;
-          font-size: 0.95rem;
+          font-size: 0.9rem;
           background: #ffffff;
           color: #1e293b;
           outline: none;
-          transition: border-color 0.2s;
+          box-sizing: border-box;
+          transition: all 0.2s;
 
           &:focus {
             border-color: #3182ce;
@@ -83,31 +86,73 @@
         }
 
         select {
-          min-width: 180px;
+          min-width: 170px;
         }
 
         input {
           width: 130px;
         }
       }
+
+      .api-status-field {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .status-indicator {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          height: 42px; /* Aligned with inputs and buttons */
+          padding: 0 0.85rem;
+          background: #ffffff;
+          border: 1px solid #cbd5e1;
+          border-radius: 50px;
+          font-size: 0.875rem;
+          color: #334155;
+          box-sizing: border-box;
+        }
+
+        .status-dot {
+          width: 8px;
+          height: 8px;
+          background-color: #22c55e;
+          border-radius: 50%;
+          box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+        }
+
+        .status-text {
+          font-weight: 500;
+        }
+      }
     }
   }
 
-  /* Universal Buttons */
+  .count {
+    justify-content: center;
+  }
+
+  /* Universal Buttons UI Balance */
   .btn {
-    /* Base button styles */
-    padding: 0.5rem 1rem;
+    height: 42px; /* Strict height consistency for all controls */
+    padding: 0 1rem;
     border: 1px solid #cbd5e1;
     border-radius: 6px;
     background: #ffffff;
     color: #475569;
     font-weight: 500;
+    font-size: 0.9rem;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    box-sizing: border-box;
     transition: all 0.2s ease;
 
     /* Secondary button hover state */
     &:hover {
-      background: #c4d5e7;
+      background: #f1f5f9;
       border-color: #94a3b8;
       color: #1e293b;
     }
@@ -116,29 +161,51 @@
     &.active {
       background: #e2e8f0;
       color: #1e293b;
-      border-color: #d1d6de;
-      border-style: dashed;
+      border-color: #94a3b8;
+      font-weight: 600;
     }
 
     /* Primary (Live) button styles */
     &.live-btn {
-      /* Soft pastel mint background for primary action */
-      background: #e6f4ea;
-      color: #137333;
-      border-color: #9cd2ab;
-      font-weight: bold;
+      background: #f0fdf4;
+      color: #16a34a;
+      border-color: #bbf7d0;
+      font-weight: 600;
 
       /* Primary button hover state */
       &:hover {
-        background: #ceead6;
-        border-color: #a8dab5;
+        background: #dcfce7;
+        border-color: #86efac;
       }
 
       /* Primary button active state */
       &.active {
-        background: #137333;
+        background: #16a34a;
         color: #ffffff;
-        border-color: #137333;
+        border-color: #16a34a;
+      }
+    }
+
+    /* Mock button styles */
+    &.mock-btn {
+      background: #f8fafc;
+      color: #475569;
+
+      &.active {
+        background: #e2e8f0;
+        color: #0f172a;
+        border-color: #64748b;
+      }
+    }
+
+    /* Reset button styles */
+    &.reset-btn {
+      color: #64748b;
+
+      &:hover {
+        background: #fee2e2;
+        color: #dc2626;
+        border-color: #fca5a5;
       }
     }
   }
@@ -283,5 +350,41 @@
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* AI Prompt Field Styling */
+.ai-prompt-field {
+  flex: 1 1 100% !important; // Makes AI input span full width of the top row
+
+  .ai-input-group {
+    display: flex;
+    gap: 0.5rem;
+
+    input {
+      flex: 1;
+      width: auto !important;
+      height: 42px;
+      border-color: #cbd5e1;
+
+      &:focus {
+        border-color: #4f46e5;
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+      }
+    }
+  }
+
+  .ai-btn {
+    height: 42px;
+    background: #eef2ff;
+    color: #4f46e5;
+    border-color: #c7d2fe;
+    font-weight: 600;
+    white-space: nowrap;
+
+    &:hover {
+      background: #e0e7ff;
+      border-color: #a5b4fc;
+    }
   }
 }
