@@ -180,6 +180,7 @@ To enable live data fetching without CORS or security issues, deploy the backend
 ```bash
 npx wrangler secret put MOVEBANK_USERNAME
 npx wrangler secret put MOVEBANK_PASSWORD
+npx wrangler secret put GROQ_API_KEY
 ```
 
 3. Deploy the worker to your Cloudflare account:
