@@ -8,7 +8,7 @@
       <a href="https://www.movebank.org/" target="_blank" rel="noopener">Movebank API</a>
       <br />
       A global infrastructure coordinated by the
-      <a href="https://www.ab.mpg.de/" target="_blank" rel="noopener"
+      <a href="https://www.mpg.de/" target="_blank" rel="noopener"
         >Max Planck Institute of Animal Behavior</a
       >, the
       <a href="https://www.uni-konstanz.de/" target="_blank" rel="noopener"
@@ -17,12 +17,32 @@
       and partner institutions
     </p>
 
-    <!-- Dynamic Movebank API Query Panel -->
-    <form [formGroup]="queryForm" (ngSubmit)="loadCustomLiveQuery()" class="live-query-panel">
+    <!-- Dynamic Movebank API Query Panel (Updated for signal-based component) -->
+    <div class="live-query-panel">
+      <!-- AI Natural Language Prompt Field -->
+      <div class="query-field ai-prompt-field">
+        <label for="aiPrompt">🤖 AI Assistant Query:</label>
+        <div class="ai-input-group">
+          <input
+            id="aiPrompt"
+            type="text"
+            [value]="aiPrompt()"
+            (input)="aiPrompt.set($any($event.target).value)"
+            placeholder="e.g. find studies about white storks"
+          />
+          <button type="button" class="btn ai-btn" (click)="onAiSearch()">✨ Ask AI</button>
+        </div>
+      </div>
+
       <div class="query-field">
-        <label for="entityType">Entity:</label>
-        <select id="entityType" formControlName="entityType">
+        <label for="entityType">Entity</label>
+        <select
+          id="entityType"
+          [value]="entityType()"
+          (change)="entityType.set($any($event.target).value)"
+        >
           <option value="study">Studies (List)</option>
+          <option value="event">Events (Telemetry Data)</option>
           <option value="tag_type">Tag Types (Sensors)</option>
           <option value="taxon">Taxons (Animal Species)</option>
           <option value="deployment">Deployments (Tracking events)</option>
@@ -30,29 +50,67 @@
       </div>
 
       <div class="query-field">
-        <label for="studyId">Study ID (Opt):</label>
-        <input id="studyId" type="text" formControlName="studyId" placeholder="e.g. 123456" />
+        <label for="studyId">Study ID (Optional)</label>
+        <input
+          id="studyId"
+          type="text"
+          [value]="studyId()"
+          (input)="studyId.set($any($event.target).value)"
+          placeholder="e.g. 123456"
+        />
       </div>
 
       <div class="query-field">
-        <label for="liveData">Movebank Data Source</label>
-        <button type="submit" class="btn live-btn" [class.active]="activeSource() === 'live'">
+        <label>Movebank Source</label>
+        <button
+          type="button"
+          class="btn live-btn"
+          [class.active]="activeSource() === 'live'"
+          (click)="loadCustomLiveQuery()"
+        >
           🌐 Fetch Live API
         </button>
       </div>
 
-      <div class="query-field">
-        <label for="localData">Local Mock Data Source</label>
+      <div class="query-field api-status-field">
+        <label>Status</label>
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-text">Movebank API: Connected</span>
+        </div>
+      </div>
+
+      <div class="query-field api-status-field">
+        <label>Total Datasets</label>
+        <div class="status-indicator count">
+          <span class="status-text"> {{ datasets().length }}</span>
+        </div>
+      </div>
+
+      <div class="query-field mock-btn">
+        <label>Mock Data</label>
         <button
           type="button"
-          class="btn"
+          class="btn mock-btn"
           [class.active]="activeSource() === 'mock'"
           (click)="loadMockData()"
         >
-          📂 Local Mock Data
+          📂 Local Mock
         </button>
       </div>
-    </form>
+
+      <div class="query-field">
+        <label>Actions</label>
+        <button
+          type="button"
+          class="btn reset-btn"
+          (click)="resetFilters()"
+          title="Clear all filters and inputs"
+        >
+          🔄 Reset
+        </button>
+      </div>
+    </div>
   </header>
 
   <!-- Loading State -->
@@ -104,20 +162,5 @@
   }
 
   <!-- Global App Footer with Links -->
-  <footer class="app-main-footer">
-    <div class="footer-content">
-      <p>
-        <strong>MoveRDM Dataset Explorer</strong> • Open-source project available on
-        <a href="https://github.com/wixhub/movebank-explorer-web" target="_blank" rel="noopener"
-          >GitHub</a
-        >
-      </p>
-      <p class="footer-subtext">
-        Powered by Angular & Cloudflare Workers. Data streams provided by Movebank.
-      </p>
-      <span class="author-credit">
-        Developed by <a href="https://github.com/wixhub" target="_blank" rel="noopener">@Rublin</a>
-      </span>
-    </div>
-  </footer>
+  <app-footer />
 </div>
