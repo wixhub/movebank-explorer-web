@@ -11,6 +11,7 @@ A high-performance, fully responsive web application built as a frontend prototy
 
 [![Angular](https://img.shields.io/badge/Angular-22-red?logo=angular)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![AI Assistant](https://img.shields.io/badge/AI_Assistant-Enabled-8a2be2?style=flat&logo=openai&logoColor=white)](https://movebank-explorer.pages.dev)
 [![Cloudflare Pages](https://img.shields.io/badge/Deployed%20to-Cloudflare%20Pages-orange?logo=cloudflare)](https://pages.cloudflare.com/)
 [![Cloudflare Worker](https://img.shields.io/badge/Cloudflare-Worker-F38020?logo=cloudflare&logoColor=white)](https://wispy-surf-c9db.rublin.workers.dev/)
 [![SCSS](https://img.shields.io/badge/Styles-SCSS-pink?logo=sass)](https://sass-lang.com/)
@@ -25,7 +26,7 @@ A high-performance, fully responsive web application built as a frontend prototy
 
 ## 📌 About the Project
 
-This project simulates a production-ready interface for browsing, querying, and managing complex scientific datasets and metadata structures, bridging local mock storage with real-time telemetry streams from [Movebank](https://www.movebank.org/)
+This project simulates a production-ready interface for browsing, querying and managing complex scientific datasets and metadata structures, bridging local mock storage with real-time telemetry streams from [Movebank](https://www.movebank.org/)
 
 ---
 
@@ -39,6 +40,7 @@ This project simulates a production-ready interface for browsing, querying, and 
 
 - **Dual Data Sources:** Seamlessly toggle between local static mock datasets and live real-time telemetry streams.
 - **Dynamic Query Builder:** Interact directly with multiple Movebank entities (`study`, `tag_type`, `taxon`, `deployment`) with optional custom `study_id` filters.
+- **AI Assistant Query:** Natural language search bar ("e.g., find studies about white storks") powered by Groq, turning conversational prompts into structured filter parameters on the fly.
 - **CORS & Auth Proxy:** Built on top of **Cloudflare Workers** to safely inject API credentials and handle cross-origin restrictions gracefully.
 - **Client-Side CSV/TSV Parser:** Efficiently parses raw text/CSV data streams coming from upstream scientific endpoints into reactive Angular models on the fly.
 - **Robust Error Handling:** Automatically clears previous results and displays clean notifications if live queries return empty datasets or fail.
@@ -51,6 +53,7 @@ This project simulates a production-ready interface for browsing, querying, and 
 - **Frontend:** This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.7 (Standalone Components, Signals, Reactive Forms, HttpClient)
 - **Styling:** SCSS (Fully Responsive Flex/Grid Layouts, Custom Color Palettes)
 - **Backend / Middleware:** Cloudflare Workers (TypeScript, Fetch API, Basic Auth Injection)
+- **AI & Intelligence:** Groq API (High-performance LLM inference integrated into the backend proxy for natural language dataset querying).
 - **Data Format:** JSON (Local Mock) & TSV/CSV (Live Movebank Direct-Read Stream)
 
 ---
@@ -158,7 +161,7 @@ For more information on using the Angular CLI, including detailed command refere
 
 ## 🌐 Data Source & Backend Proxy
 
-- **Cloudflare Worker Integration**: The application utilizes a dedicated serverless worker as an online data source and API proxy. It securely fetches data from the Movebank API, handles CORS limitations, and parses raw CSV responses into strongly-typed data models.
+- **Cloudflare Worker Integration**: The application utilizes a dedicated serverless worker as an online data source and API proxy. It securely fetches data from the Movebank API, handles CORS limitations and parses raw CSV responses into strongly-typed data models.
 
 - **Backend Endpoint**: 🔗 **[View Worker on Cloudflare Workers](https://wispy-surf-c9db.rublin.workers.dev/)**
 
@@ -187,7 +190,7 @@ npx wrangler deploy
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/wixhub/moverdm-explorer-web/issues).
+Contributions, issues and feature requests are welcome! Feel free to check the [issues page](https://github.com/wixhub/moverdm-explorer-web/issues).
 
 ---
 
