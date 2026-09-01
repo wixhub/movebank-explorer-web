@@ -1,0 +1,29 @@
+%%{init: {"flowchart": {"nodeSpacing": 100, "rankSpacing": 120, "diagramPadding": 24}}}%%
+flowchart TD
+User["User / Browser"]
+User -->|clicks button / interaction| DatasetCatalogComponent
+DatasetCatalogComponent -->|uses| DatasetService
+
+%% Mock Data Flow
+DatasetService -->|GET local JSON| StaticData[data/datasets.json]
+StaticData -->|mock JSON| DatasetService
+DatasetService -->|data| DatasetCatalogComponent
+
+%% Two types of requests from DatasetService to Worker
+%% Insert invisible nodes to separate dense labels
+ds_proxy_inv["↓"]
+ds_ai_inv["↓"]
+
+DatasetService -->|GET proxy| ds_proxy_inv
+ds_proxy_inv --> Worker
+DatasetService -->|POST /api/ai-query| ds_ai_inv
+ds_ai_inv --> Worker
+Worker -->|response JSON| DatasetService
+DatasetService -->|processed data| DatasetCatalogComponent
+
+%% Internal Worker Routing
+Worker -->|AI query POST| Groq[Groq API]
+Groq -->|AI response JSON| Worker
+Worker -->|proxy GET| MovebankAPI[Movebank direct-read API]
+MovebankAPI -->|upstream data| Worker
+MovebankAPI --- Movebank[(Movebank)]

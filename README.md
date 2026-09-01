@@ -4,23 +4,20 @@
 
 A high-performance, fully responsive web application built as a frontend prototype for ecological and behavioral research data repositories within the **MoveRDM** initiative. It integrates with the **[Movebank API](https://www.movebank.org/)** — a global infrastructure coordinated by the [Max Planck Institute of Animal Behavior](https://www.ab.mpg.de/), the [University of Konstanz](https://www.uni-konstanz.de/) and partner institutions.
 
-[![Movebank API](https://img.shields.io/badge/Movebank-API_Live-2ea44f?style=flat&logo=databricks&logoColor=white)](https://www.movebank.org/)
-[![Max Planck Institute](https://img.shields.io/badge/MPI_Animal_Behavior-Partner-005691?style=flat)](https://www.ab.mpg.de/)
-[![University of Konstanz](https://img.shields.io/badge/Uni_Konstanz-Partner-003366?style=flat)](https://www.uni-konstanz.de/)
-[![MoveRDM Dataset Explorer](https://img.shields.io/badge/MoveRDM_Dataset_Explorer-Project-00a8cc?style=flat&logo=databricks&logoColor=white)](https://movebank-explorer.pages.dev)
-
 [![Angular](https://img.shields.io/badge/Angular-22-red?logo=angular)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![SCSS](https://img.shields.io/badge/Styles-SCSS-pink?logo=sass)](https://sass-lang.com/)
+[![Groq API](https://img.shields.io/badge/Groq_API-Enabled-F55036?style=flat&logo=groq&logoColor=white)](https://groq.com/)
 [![AI Assistant](https://img.shields.io/badge/AI_Assistant-Enabled-8a2be2?style=flat&logo=openai&logoColor=white)](https://movebank-explorer.pages.dev)
+
+[![Movebank API](https://img.shields.io/badge/Movebank-API_Live-2ea44f?style=flat&logo=databricks&logoColor=white)](https://www.movebank.org/)
+[![MoveRDM Dataset Explorer](https://img.shields.io/badge/MoveRDM_Dataset_Explorer-Project-00a8cc?style=flat&logo=databricks&logoColor=white)](https://movebank-explorer.pages.dev)
+
 [![Cloudflare Pages](https://img.shields.io/badge/Deployed%20to-Cloudflare%20Pages-orange?logo=cloudflare)](https://pages.cloudflare.com/)
 [![Cloudflare Worker](https://img.shields.io/badge/Cloudflare-Worker-F38020?logo=cloudflare&logoColor=white)](https://wispy-surf-c9db.rublin.workers.dev/)
-[![SCSS](https://img.shields.io/badge/Styles-SCSS-pink?logo=sass)](https://sass-lang.com/)
 
----
-
-## 🚀 Live Demo
-
-🔗 **[View Live Application on Cloudflare Pages](https://movebank-explorer.pages.dev)**
+[![Max Planck Institute](https://img.shields.io/badge/MPI_Animal_Behavior-Partner-005691?style=flat)](https://www.ab.mpg.de/)
+[![University of Konstanz](https://img.shields.io/badge/Uni_Konstanz-Partner-003366?style=flat)](https://www.uni-konstanz.de/)
 
 ---
 
@@ -33,6 +30,24 @@ This project simulates a production-ready interface for browsing, querying and m
 ## 📖 Overview
 
 **MoveRDM** is an advanced research data repository prototype built for ecological and behavioral telemetry data, featuring live integration with the **Movebank API**. The application bridges the gap between static local mock data storage and real-time scientific data streaming via a secure cloud proxy architecture.
+
+---
+
+## 🚀 Live Demo
+
+🔗 **[View Live Application on Cloudflare Pages](https://movebank-explorer.pages.dev)**
+
+![MoveRDM Dataset Explorer](img.png)
+
+---
+
+## 🏛️ Project Architecture
+
+<p align="center">
+  <img src="architecture-diagram.png" alt="Movebank Explorer Architecture Diagram" width="100%">
+</p>
+
+> _Tip: You can also inspect the raw diagram source code in [ARCHITECTURE.MMD](architecture-diagram.mmd)._
 
 ---
 
