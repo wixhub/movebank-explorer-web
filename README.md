@@ -37,7 +37,7 @@ This project simulates a production-ready interface for browsing, querying and m
 
 🔗 **[View Live Application on Cloudflare Pages](https://movebank-explorer.pages.dev)**
 
-![MoveRDM Dataset Explorer](img.png)
+![MoveRDM Dataset Explorer](main_page.png)
 
 ---
 
@@ -73,27 +73,6 @@ This project simulates a production-ready interface for browsing, querying and m
 
 ---
 
-## 📂 Project Structure
-
-```text
-movebank-explorer-web/
-├── src/
-│   ├── app/
-│   │   ├── features/
-│   │   │   └── dataset-catalog/         # Main component (TypeScript, HTML, SCSS)
-│   │   └── core/
-│   │       ├── models/
-│   │       │   └── dataset.model.ts     # Data interface definitions
-│   │       └── services/
-│   │           └── dataset.service.ts   # HTTP requests & CSV/TSV parsing logic
-│   └── styles.scss                      # Global application styles
-└── public/
-    └── data/
-        └── datasets.json                # Local fallback data storage
-```
-
----
-
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -109,7 +88,7 @@ movebank-explorer-web/
 ```bash
 git clone git@github.com:wixhub/movebank-explorer-web.git
 
-cd movebank-explorer-web
+cd movebank-explorer-web/frontend
 ```
 
 2. **Install frontend dependencies:**
@@ -118,7 +97,7 @@ cd movebank-explorer-web
 npm install
 ```
 
-3. ** Run local development server:
+3. **Run local development server:**
 
 ```bash
 ng serve
@@ -188,7 +167,11 @@ For more information on using the Angular CLI, including detailed command refere
 
 To enable live data fetching without CORS or security issues, deploy the backend proxy worker:
 
-1. Create a `worker.ts` file using the provided proxy implementation.
+1. Navigate to the backend directory:
+
+```bash
+cd backend/wispy-surf-c9db
+```
 
 2. Configure your environment secrets in Cloudflare:
 
