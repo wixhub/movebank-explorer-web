@@ -197,7 +197,7 @@ Contributions, issues and feature requests are welcome! Feel free to check the [
 
 If you have any questions, suggestions, or feedback regarding this project, feel free to reach out:
 
-- **Author:** [@Rublin](https://github.com/wixhub)
+- **Author:** [@wixhub](https://github.com/wixhub)
 - **Telegram:** [@typeweb](https://t.me/typeweb)
 - **GitHub Repository:** [moverdm-explorer](https://github.com/wixhub/moverdm-explorer-web)
 
