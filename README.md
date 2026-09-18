@@ -25,6 +25,8 @@ A high-performance, fully responsive web application built as a frontend prototy
 
 This project simulates a production-ready interface for browsing, querying and managing complex scientific datasets and metadata structures, bridging local mock storage with real-time telemetry streams from [Movebank](https://www.movebank.org/)
 
+> **Notice:** This repository is no longer actively maintained. The frontend project has been migrated to a [NX monorepo Eco System](https://github.com/wixhub/ecosystem).
+
 ---
 
 ## 📖 Overview
